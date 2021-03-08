@@ -1,0 +1,17 @@
+
+.header_texts {
+    padding-left: 0.4em;
+}
+
+.header_row {
+  display: flex;
+  flex-direction: row;
+  color: #fff;
+}
+
+.bus_icon {
+  width: 36px;
+  height: 36px;
+  align-self: flex-start;
+  margin-top: 0.2em;
+}
