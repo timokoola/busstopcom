@@ -1,0 +1,51 @@
+.bus_stop {
+  width: 360px;
+  min-width: 40ch;
+  /* Rectangle 4 */
+  padding: 0.5em 1em 0.5em 1.33em;
+
+  /* Auto Layout */
+  min-height: 44px;
+
+  background: #fffefe;
+  border: 1px solid rgba(130, 192, 204, 0.25);
+  box-sizing: border-box;
+  box-shadow: 0px 4px 4px rgba(130, 192, 204, 0.25);
+  border-radius: 10px;
+
+  color: rgba(0, 0, 0, 1);
+
+  margin-bottom: 0.5em;
+}
+
+.bus_stop:focus {
+  background: #fffefe;
+  border: 1px solid rgba(130, 192, 204, 1);
+  box-sizing: border-box;
+  box-shadow: 0px 4px 4px rgba(130, 192, 204, 0.25);
+  border-radius: 10px;
+
+  outline: none;
+}
+
+.bus_stop::placeholder {
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.bus_stop_label {
+  /* Bus stop */
+
+  font-family: Lato;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 19px;
+
+  color: #000000;
+}
+
+.search_icon {
+  position: absolute;
+  top: 2.5em;
+  left: 4px;
+}

@@ -1,8 +1,14 @@
+import styles from "../styles/SearchBox.module.scss";
+
 export default function SearchBox({ searchTerm, setSearchTerm }) {
   return (
-    <div className="search_box">
+    <div className="self-start | relative | text-400 | measure-short">
+      <label htmlFor="bus_stop" id="bus_stop_label">
+        Stop Name
+      </label>
       <input
         type="text"
+        className={styles.bus_stop}
         id="bus_stop"
         placeholder="stop name e.g. Rautatientori"
         value={searchTerm}
@@ -10,11 +16,11 @@ export default function SearchBox({ searchTerm, setSearchTerm }) {
         autoFocus
       />
       <img
-        src="images/looking_glass.svg"
+        src="looking_glass.svg"
         width="16px"
         height="16px"
         alt="search icon"
-        className="search_icon"
+        className={styles.search_icon}
       />
     </div>
   );

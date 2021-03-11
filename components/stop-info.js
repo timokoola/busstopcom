@@ -1,4 +1,4 @@
-import Head from "next/head";
+import styles from "../styles/StopInfo.module.scss";
 
 function patternToSimple(pattern) {
   const short = pattern.name.split(" ")[0];
@@ -17,8 +17,11 @@ export default function StopInfo({ stop }) {
   //let linkUrl = `https://reittiopas.hsl.fi/pysakit/${currentStop.gtfsId}`;
 
   return (
-    <div className="result_box" style={{ display: stop ? "block" : "none" }}>
-      <div className="bus_code">
+    <div
+      className={styles.result_box}
+      style={{ display: stop ? "block" : "none" }}
+    >
+      <div className={styles.bus_code}>
         <div>
           <a href={`https://reittiopas.hsl.fi/pysakit/${stop.gtfsId}`}>
             {stop.code} {stop.name}
@@ -26,7 +29,7 @@ export default function StopInfo({ stop }) {
         </div>
         <div>{stop.gtfsId}</div>
       </div>
-      <div className="stop_routes">{uniquePatterns}</div>
+      <div className="text-300">{uniquePatterns}</div>
     </div>
   );
 }
