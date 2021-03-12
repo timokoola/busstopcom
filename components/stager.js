@@ -3,7 +3,7 @@ export default function Stager({ stage }) {
     <div className="stack | text-500 | inline-squeeze">
       <ol>
         <li className={stage == 'first' ? 'big-shadow' : 'text-500' }>Search and select a bus stop</li>
-        <li>Edit background</li>
+        <li className={stage == 'second' ? 'big-shadow' : 'text-500' }>Edit background</li>
         <li>Download Code</li>
         <li>Open in Scriptable</li>
       </ol>

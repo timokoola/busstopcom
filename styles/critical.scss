@@ -9,6 +9,8 @@
 // Global styles start
 :root {
   --flow-space: #{get-size("600")};
+  --gradient-top: #{get-color("primary")};
+  --gradient-bottom: #{get-color("secondary")};
 }
 
 body {
@@ -89,3 +91,4 @@ h4 {
 @import "utilities/relative";
 @import "utilities/inline-squeeze";
 @import "utilities/vertical-space";
+@import "utilities/cool-gradient";

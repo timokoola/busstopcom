@@ -1,4 +1,5 @@
 import styles from "../styles/StopInfo.module.scss";
+import Link from "next/link";
 
 function patternToSimple(pattern) {
   const short = pattern.name.split(" ")[0];
@@ -23,9 +24,11 @@ export default function StopInfo({ stop }) {
     >
       <div className={styles.bus_code}>
         <div>
-          <a href={`https://reittiopas.hsl.fi/pysakit/${stop.gtfsId}`}>
-            {stop.code} {stop.name}
-          </a>
+          <Link href={`/stops\/${stop.gtfsId}`}>
+            <a>
+              {stop.code} {stop.name}
+            </a>
+          </Link>
         </div>
         <div>{stop.gtfsId}</div>
       </div>

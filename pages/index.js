@@ -6,7 +6,7 @@ import StopList from "../components/stop-list";
 import SearchBox from "../components/search-box";
 import Stager from "../components/stager";
 
-export default function Home() {
+function Home() {
   const [searchTerm, setSearchTerm] = useState("");
   return (
     <div className={styles.container}>
@@ -46,3 +46,5 @@ export default function Home() {
     </div>
   );
 }
+
+export default Home;
