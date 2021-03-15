@@ -3,11 +3,11 @@ import styles from "../../styles/Home.module.scss";
 import Header from "../../components/header";
 import Link from "next/link";
 import Stager from "../../components/stager";
-import StopInfo from "../../components/stop-info";
 import { gql, useQuery } from "@apollo/client";
 import { useRouter } from "next/router";
-import { ChromePicker } from "react-color";
+import BusColorPicker from "../../components/color-picker";
 import { useEffect, useState } from "react";
+import Footer from "../../components/footer";
 
 const STOPINFO = gql`
   query StopInfo($id: String!) {
@@ -15,35 +15,54 @@ const STOPINFO = gql`
       gtfsId
       name
       code
-      patterns {
-        code
-        directionId
-        name
+      stoptimesWithoutPatterns(numberOfDepartures: 4) {
+        scheduledDeparture
+        realtimeDeparture
+        departureDelay
+        realtime
+        realtimeState
+        serviceDay
         headsign
-        route {
-          gtfsId
-          shortName
-          longName
-          mode
+        trip {
+          routeShortName
+          tripHeadsign
+          directionId
+          route {
+            type
+          }
         }
       }
     }
   }
 `;
 
+function getDepartureTime(d) {
+  let itemDate = new Date(d.serviceDay * 1000 + d.realtimeDeparture * 1000);
+  return itemDate.toLocaleTimeString([], {
+    hour: "2-digit",
+    minute: "2-digit",
+  });
+}
+
 function Stop() {
   const [topColor, setTopColor] = useState("#489fb5");
   const [bottomColor, setBottomColor] = useState("#82c0cc");
+  const [textColor, setTextColor] = useState("#ffffff");
 
   useEffect(() => {
     document.documentElement.style.setProperty(
-      '--gradient-top',
-      topColor.hex
+      "--gradient-top",
+      topColor.hex ? topColor.hex : "#489fb5"
     );
 
     document.documentElement.style.setProperty(
-      '--gradient-bottom',
-      bottomColor.hex
+      "--gradient-bottom",
+      bottomColor.hex ? bottomColor.hex : "#489fb5"
+    );
+
+    document.documentElement.style.setProperty(
+      "--widget-text-color",
+      textColor.hex ? textColor.hex : "#ffffff"
     );
   });
   const router = useRouter();
@@ -67,31 +86,75 @@ function Stop() {
       </header>
 
       <main className={styles.main}>
-        <div className="measure-short | font-sans | text-400 | stack">
-          <section className="stack">
+        <div className="measure-short | font-sans | text-400 | stack flow">
+          <section className="stack flow">
             <div className="stack">
               <Stager stage="second" />
             </div>
             <Link href="/">
               <a>Go back to search from</a>
             </Link>
-            <h3>Top Color</h3>
-            <ChromePicker color={topColor} onChange={setTopColor} />
-            <div className="text-900 | bg-primary | cool-gradient">
-              Color test
+
+            <BusColorPicker
+              title="Top Color"
+              color={topColor}
+              setColor={setTopColor}
+              styling="cool-gradient-top"
+            />
+
+            <BusColorPicker
+              title="Text Color"
+              color={textColor}
+              setColor={setTextColor}
+              styling="cool-gradient-text-bg"
+            />
+
+            <BusColorPicker
+              title="Bottom Color"
+              color={bottomColor}
+              setColor={setBottomColor}
+              styling="cool-gradient-bottom"
+            />
+          </section>
+          <section>
+            <h3>Colours Preview</h3>
+            <div className="mini-gap">
+              <div className="previewer | flow | text-400 | cool-gradient">
+                <p className="text-500">
+                  {data?.stop?.code} {data?.stop?.name}
+                </p>
+                {data?.stop?.stoptimesWithoutPatterns?.map((departure) => (
+                  <div
+                    key={departure.scheduledDeparture}
+                    className="previewer-line"
+                  >
+                    <div className="previewer-left">
+                      {departure?.trip?.routeShortName}
+                    </div>
+                    <div className="previewer-middle">
+                      {departure?.trip?.tripHeadsign}
+                    </div>
+                    <div className="previewer-right">
+                      {getDepartureTime(departure)}
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
-            <h3>Bottom Color</h3>
-            <ChromePicker color={bottomColor} onChange={setBottomColor} />
-            <StopInfo key={data?.stop?.gtfsId} stop={data?.stop} />
+            <p className="text-300 mini-gap">
+              Note! Preview only shows colours. Text typeface will be different
+              on device.
+            </p>
+          </section>
+          <section>
+            <button className="download-button | text-600 font-base">
+              Download Widget Code
+            </button>
           </section>
         </div>
       </main>
 
-      <footer className={styles.footer}>
-        <p className="color-light | text-300">
-          Copyright &copy; 2021 Timo Koola
-        </p>
-      </footer>
+      <Footer />
     </div>
   );
 }

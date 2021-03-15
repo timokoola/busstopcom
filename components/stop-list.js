@@ -1,5 +1,6 @@
 import { gql, useQuery } from "@apollo/client";
 import StopInfo from "../components/stop-info";
+import PuffLoader from "react-spinners/PuffLoader"
 
 const STOPS = gql`
   query Stops($name: String!) {
@@ -19,7 +20,7 @@ export default function StopList({ name }) {
   const { loading, error, data } = useQuery(STOPS, {
     variables: { name },
   });
-  if (loading) return "Loading...";
+  if (loading) return (<PuffLoader />);
   if (error) return `ERROR! ${error}`;
 
   return (

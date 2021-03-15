@@ -1,0 +1,19 @@
+.previewer {
+  min-width: 360px;
+  border-radius: 0.4em;
+  padding: 0.5em;
+}
+
+.previewer-line {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.previewer-left {
+    min-width: 6ch;
+}
+
+.previewer-middle {
+    flex-grow: 2;
+}

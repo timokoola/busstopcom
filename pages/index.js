@@ -5,6 +5,8 @@ import { useState } from "react";
 import StopList from "../components/stop-list";
 import SearchBox from "../components/search-box";
 import Stager from "../components/stager";
+import Footer from "../components/footer";
+
 
 function Home() {
   const [searchTerm, setSearchTerm] = useState("");
@@ -31,18 +33,14 @@ function Home() {
                 />
               </div>
               <div className="stack | vertical-space">
-                <StopList name={searchTerm} />
+                  <StopList name={searchTerm} />
               </div>
             </div>
           </section>
         </div>
       </main>
 
-      <footer className={styles.footer}>
-        <p className="color-light | text-300">
-          Copyright &copy; 2021 Timo Koola
-        </p>
-      </footer>
+      <Footer />
     </div>
   );
 }
