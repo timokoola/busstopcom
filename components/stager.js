@@ -7,8 +7,19 @@ export default function Stager({ stage }) {
         <li
           className={stage == "first" ? "big-shadow" : "text-500  | faded-text"}
         >
-          Search and select a bus stop
+          Install <a href="https://scriptable.app">Scriptable</a> on your iPhone
         </li>
+        <li
+          className={stage == "first" ? "big-shadow" : "text-500  | faded-text"}
+        >
+          Install Helsinki Bus Widget from Scriptable Gallery
+        </li>
+        <li
+          className={stage == "first" ? "big-shadow" : "text-500  | faded-text"}
+        >
+          Search for and Select Bus Stop
+        </li>
+
         <li
           className={stage == "second" ? "big-shadow" : "text-500 | faded-text"}
         >
@@ -17,12 +28,12 @@ export default function Stager({ stage }) {
         <li
           className={stage == "second" ? "big-shadow" : "text-500 | faded-text"}
         >
-          Download Code
+          Copy Parameters
         </li>
         <li
           className={stage == "second" ? "big-shadow" : "text-500 | faded-text"}
         >
-          Open in <a href="https://scriptable.app">Scriptable</a>
+          Paste Parameters into Widget
         </li>
       </ol>
     </div>

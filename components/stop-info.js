@@ -1,6 +1,7 @@
 import styles from "../styles/StopInfo.module.scss";
 import Link from "next/link";
 import Fade from "react-reveal/Fade";
+import LinkBar from "../components/link-bar";
 
 function patternToSimple(pattern) {
   const short = pattern.name.split(" ")[0];
@@ -34,7 +35,15 @@ export default function StopInfo({ stop }) {
           </div>
           <div>{stop.gtfsId}</div>
         </div>
-        <div className="text-300">{uniquePatterns}</div>
+        <div className="text-300 stack">
+          {uniquePatterns}{" "}
+          
+          <LinkBar
+            linkText="Select this Stop"
+            linkUrl={`/stops\/${stop.gtfsId}`}
+            placement="reversed"
+          />
+        </div>
       </div>
     </Fade>
   );

@@ -1,0 +1,15 @@
+.link-bar {
+  display: inline-flex;
+  flex-direction: row;
+  padding: 0.5em;
+  background-color: get-color("primary");
+  color: white;
+  border-radius: 0.25em;
+}
+
+.link-bar[data-state="reversed"] {
+  margin-top: 0.5em;
+  font-size: get-size("300");
+  display: inline-flex;
+  flex-direction: row-reverse;
+}

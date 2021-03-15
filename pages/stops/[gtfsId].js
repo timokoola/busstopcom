@@ -8,6 +8,7 @@ import { useRouter } from "next/router";
 import BusColorPicker from "../../components/color-picker";
 import { useEffect, useState } from "react";
 import Footer from "../../components/footer";
+import LinkBar from "../../components/link-bar";
 
 const STOPINFO = gql`
   query StopInfo($id: String!) {
@@ -57,7 +58,7 @@ function Stop() {
 
     document.documentElement.style.setProperty(
       "--gradient-bottom",
-      bottomColor.hex ? bottomColor.hex : "#489fb5"
+      bottomColor.hex ? bottomColor.hex : "#16697a"
     );
 
     document.documentElement.style.setProperty(
@@ -91,33 +92,15 @@ function Stop() {
             <div className="stack">
               <Stager stage="second" />
             </div>
-            <Link href="/">
-              <a>Go back to search from</a>
-            </Link>
-
-            <BusColorPicker
-              title="Top Color"
-              color={topColor}
-              setColor={setTopColor}
-              styling="cool-gradient-top"
-            />
-
-            <BusColorPicker
-              title="Text Color"
-              color={textColor}
-              setColor={setTextColor}
-              styling="cool-gradient-text-bg"
-            />
-
-            <BusColorPicker
-              title="Bottom Color"
-              color={bottomColor}
-              setColor={setBottomColor}
-              styling="cool-gradient-bottom"
-            />
+            <LinkBar linkText="Go back to search" linkUrl="/" />
           </section>
+
           <section>
             <h3>Colours Preview</h3>
+            <p className="text-300 mini-gap">
+              Note! Preview only shows colours. Text typeface will be different
+              on device.
+            </p>
             <div className="mini-gap">
               <div className="previewer | flow | text-400 | cool-gradient">
                 <p className="text-500">
@@ -141,15 +124,52 @@ function Stop() {
                 ))}
               </div>
             </div>
-            <p className="text-300 mini-gap">
-              Note! Preview only shows colours. Text typeface will be different
-              on device.
-            </p>
           </section>
+
           <section>
-            <button className="download-button | text-600 font-base">
-              Download Widget Code
-            </button>
+            <h3>Edit Colours</h3>
+            <p className="text-300 mini-gap">
+              You can change the background colour gradient of the widget and
+              text colour here.
+            </p>
+            <div className="flow mini-gap">
+              <BusColorPicker
+                title="Gradient Top Color"
+                color={topColor}
+                setColor={setTopColor}
+                styling="cool-gradient-top"
+              />
+
+              <BusColorPicker
+                title="Widget Text Color"
+                color={textColor}
+                setColor={setTextColor}
+                styling="cool-gradient-text-bg"
+              />
+
+              <BusColorPicker
+                title="Gradient Bottom Color"
+                color={bottomColor}
+                setColor={setBottomColor}
+                styling="cool-gradient-bottom"
+              />
+            </div>
+          </section>
+
+          <section className="flow">
+            <div>
+              <h3>Copy Code</h3>
+              <p className="text-300 mini-gap">
+                You already have the widget and you want to copy the code for
+                stop and gradient.
+              </p>
+              <button
+                className="download-button | text-500 font-base"
+                
+              >
+                Copy-Paste Code
+              </button>
+            </div>
           </section>
         </div>
       </main>

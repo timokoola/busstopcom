@@ -9,8 +9,8 @@
 // Global styles start
 :root {
   --flow-space: #{get-size("600")};
-  --gradient-top: #{get-color("primary")};
-  --gradient-bottom: #{get-color("secondary")};
+  --gradient-top: get-color("primary");
+  --gradient-bottom: get-color("primary-dark");
   --widget-text-color: #ffffff;
 }
 
@@ -117,6 +117,7 @@ details[open] summary ~ * {
 @import "blocks/center";
 @import "blocks/previewer";
 @import "blocks/download-button";
+@import "blocks/link-bar";
 
 // Import utilities
 @import "utilities/flow";

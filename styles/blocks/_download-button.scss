@@ -10,7 +10,7 @@
   -webkit-appearance: none;
   -moz-appearance: none;
 
-  min-width: 360px;
+  min-width: 375px;
   border-radius: 0.25em;
   background-color: get-color("tertiary");
   color: #fff;
@@ -18,9 +18,13 @@
   box-sizing: border-box;
   box-shadow: 0px 4px 4px rgba(255, 166, 43, 0.25);
 
-  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25);
+  //text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
 .download-button:active {
-    transform: scale(0.98);   
+  transform: scale(0.98);
+}
+
+.download-button[data-state="reverse"] {
+  background-color: get-color("primary");
 }
