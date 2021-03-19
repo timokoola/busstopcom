@@ -1,11 +1,10 @@
 import styles from "../styles/StopInfo.module.scss";
 import Link from "next/link";
-import Fade from "react-reveal/Fade";
 import LinkBar from "../components/link-bar";
 
 function patternToSimple(pattern) {
   const short = pattern.name.split(" ")[0];
-  return `${short} ${pattern.headsign} `;
+  return `${short}\u00a0${pattern.headsign} `;
 }
 
 export default function StopInfo({ stop }) {
@@ -20,7 +19,6 @@ export default function StopInfo({ stop }) {
   //let linkUrl = `https://reittiopas.hsl.fi/pysakit/${currentStop.gtfsId}`;
 
   return (
-    <Fade left>
       <div
         className={styles.result_box}
         style={{ display: stop ? "block" : "none" }}
@@ -35,16 +33,15 @@ export default function StopInfo({ stop }) {
           </div>
           <div>{stop.gtfsId}</div>
         </div>
-        <div className="text-300 stack">
+        <div className="text-300 stack box-padding">
           {uniquePatterns}{" "}
           
           <LinkBar
-            linkText="Select this Stop"
+            linkText={`Select Stop ${stop.code} ${stop.name}`}
             linkUrl={`/stops\/${stop.gtfsId}`}
             placement="reversed"
           />
         </div>
       </div>
-    </Fade>
   );
 }

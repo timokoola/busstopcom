@@ -1,16 +1,15 @@
-import Fade from "react-reveal/Fade";
 
 export default function Stager({ stage }) {
   return (
     <div className="stack | text-500 | inline-squeeze">
       <ol>
         <li
-          className={stage == "first" ? "big-shadow" : "text-500  | faded-text"}
+          className={stage == "zero" ? "big-shadow" : "text-500  | faded-text"}
         >
           Install <a href="https://scriptable.app">Scriptable</a> on your iPhone
         </li>
         <li
-          className={stage == "first" ? "big-shadow" : "text-500  | faded-text"}
+          className={stage == "zero" ? "big-shadow" : "text-500  | faded-text"}
         >
           Install Helsinki Bus Widget from Scriptable Gallery
         </li>

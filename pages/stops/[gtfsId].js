@@ -37,6 +37,21 @@ const STOPINFO = gql`
   }
 `;
 
+function copyToClipboard(e, tc, bc, textc, sc) {
+  e.preventDefault();
+  let result = `${sc};${tc};${bc}‚${textc}`;
+  navigator.clipboard.writeText(result).then(
+    function () {
+      /* clipboard successfully set */
+      console.log(`Copied ${result}`);
+    },
+    function () {
+      console.log(`Error copying`);
+      /* clipboard write failed */
+    }
+  );
+}
+
 function getDepartureTime(d) {
   let itemDate = new Date(d.serviceDay * 1000 + d.realtimeDeparture * 1000);
   return itemDate.toLocaleTimeString([], {
@@ -160,15 +175,23 @@ function Stop() {
             <div>
               <h3>Copy Code</h3>
               <p className="text-300 mini-gap">
-                You already have the widget and you want to copy the code for
-                stop and gradient.
+                Copy parameters for your widget included stop code and colours.
               </p>
               <button
                 className="download-button | text-500 font-base"
-                
+                onClick={(e) =>
+                  copyToClipboard(
+                    e,
+                    topColor.hex ? topColor.hex : topColor,
+                    bottomColor.hex ? bottomColor.hex : bottomColor,
+                    textColor.hex ? textColor.hex : textColor,
+                    gtfsId
+                  )
+                }
               >
-                Copy-Paste Code
+                Copy Parameters
               </button>
+              <output></output>
             </div>
           </section>
         </div>

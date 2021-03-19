@@ -7,7 +7,6 @@ import SearchBox from "../components/search-box";
 import Stager from "../components/stager";
 import Footer from "../components/footer";
 
-
 function Home() {
   const [searchTerm, setSearchTerm] = useState("");
   return (
@@ -32,9 +31,13 @@ function Home() {
                   setSearchTerm={setSearchTerm}
                 />
               </div>
-              <div className="stack | vertical-space">
-                  <StopList name={searchTerm} />
-              </div>
+              <output>
+                <div className="stack | vertical-space">
+                  <StopList
+                    name={searchTerm !== "" ? searchTerm : "rautatientori"}
+                  />
+                </div>
+              </output>
             </div>
           </section>
         </div>
