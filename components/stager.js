@@ -11,7 +11,7 @@ export default function Stager({ stage }) {
         <li
           className={stage == "zero" ? "big-shadow" : "text-500  | faded-text"}
         >
-          Install Helsinki Bus Widget from Scriptable Gallery
+          Install Helsinki Bus Widget
         </li>
         <li
           className={stage == "first" ? "big-shadow" : "text-500  | faded-text"}

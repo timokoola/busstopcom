@@ -37,13 +37,14 @@ const STOPINFO = gql`
   }
 `;
 
-function copyToClipboard(e, tc, bc, textc, sc) {
+function copyToClipboard(e, tc, bc, textc, sc, cbLastCopied) {
   e.preventDefault();
-  let result = `${sc};${tc};${bc}‚${textc}`;
-  navigator.clipboard.writeText(result).then(
+  let result = `${sc};${tc};${bc};${textc}`;
+  navigator?.clipboard?.writeText(result).then(
     function () {
       /* clipboard successfully set */
       console.log(`Copied ${result}`);
+      cbLastCopied(`Copied ${result}`);
     },
     function () {
       console.log(`Error copying`);
@@ -64,6 +65,7 @@ function Stop() {
   const [topColor, setTopColor] = useState("#489fb5");
   const [bottomColor, setBottomColor] = useState("#82c0cc");
   const [textColor, setTextColor] = useState("#ffffff");
+  const [lastCopied, setLastCopied] = useState("");
 
   useEffect(() => {
     document.documentElement.style.setProperty(
@@ -185,13 +187,14 @@ function Stop() {
                     topColor.hex ? topColor.hex : topColor,
                     bottomColor.hex ? bottomColor.hex : bottomColor,
                     textColor.hex ? textColor.hex : textColor,
-                    gtfsId
+                    gtfsId,
+                    setLastCopied
                   )
                 }
               >
                 Copy Parameters
               </button>
-              <output></output>
+              <output className="text-300">{lastCopied}</output>
             </div>
           </section>
         </div>
