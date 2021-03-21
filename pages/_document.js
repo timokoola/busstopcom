@@ -40,11 +40,13 @@ class MyDocument extends Document {
           <link rel="preconnect" href="https://fonts.gstatic.com" />
           <link
             href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap"
+            media="print" onload="this.onload=null;this.removeAttribute('media');"
             rel="stylesheet"
           />
           <link rel="preconnect" href="https://fonts.gstatic.com" />
           <link
             href="https://fonts.googleapis.com/css2?family=Lato&display=swap"
+            media="print" onload="this.onload=null;this.removeAttribute('media');"
             rel="stylesheet"
           />
         </Head>
