@@ -21,6 +21,7 @@ export default function SearchBox({ searchTerm, setSearchTerm }) {
         height="16px"
         alt="search icon"
         className={styles.search_icon}
+        alt=""
       />
     </div>
   );
