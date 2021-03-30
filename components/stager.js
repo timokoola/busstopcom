@@ -1,4 +1,3 @@
-
 export default function Stager({ stage }) {
   return (
     <div className="stack | text-500 | inline-squeeze">
@@ -11,7 +10,10 @@ export default function Stager({ stage }) {
         <li
           className={stage == "zero" ? "big-shadow" : "text-500  | faded-text"}
         >
-          Install Helsinki Bus Widget
+          Grab{" "}
+          <a href="https://gist.github.com/timokoola/a44268ee25bc7b22cc9e7c850d17b72c">
+            Helsinki Bus Widget code
+          </a>
         </li>
         <li
           className={stage == "first" ? "big-shadow" : "text-500  | faded-text"}
