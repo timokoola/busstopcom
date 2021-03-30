@@ -10,7 +10,7 @@
   -webkit-appearance: none;
   -moz-appearance: none;
 
-  min-width: 375px;
+  width: min(375px, 100%);
   border-radius: 0.25em;
   background-color: get-color("tertiary");
   color: #fff;
